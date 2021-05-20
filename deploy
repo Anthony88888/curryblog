@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /root/website/website/
+git pull
+../for_website/bin/pip install -r requirements
+../for_website/bin/python3 manage.py collectstatic --noinput
+../for_website/bin/python3 manage.py makemigrations
+../for_website/bin/python3 manage.py migrate
+killall -9 uwsgi
+exit 0
